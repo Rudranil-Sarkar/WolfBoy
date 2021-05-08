@@ -6,8 +6,7 @@ A Nintendo Gameboy emulator written in modern C++. Made for the purpose of learn
 
 # Building
 
-- Just `g++ *.cpp -o <obj-name> -lSDL2 -lSDL2main` to build this.
-- Also you need the boot rom separately
+- Just use `make` to build this.
 
 # Features
 
