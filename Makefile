@@ -1,5 +1,5 @@
 CC=g++
-CCFLAGS=-g -Wall
+CCFLAGS=-Wall
 LIBS=-lSDL2 -lSDL2main
 
 SRC=src
@@ -11,14 +11,17 @@ OBJS=$(patsubst $(SRC)/%.cpp, $(OBJ)/%.o, $(SRCS))
 BINDIR=bin
 BIN=$(BINDIR)/Wolfboy
 
-$(OBJ)/%.o: $(SRC)/%.cpp $(SRC)/%.h
+$(OBJ)/%.o: $(SRC)/%.cpp $(SRC)/%.h directories
 	$(CC) $(CCFLAGS) -c $< -o $@
 
-$(OBJ)/%.o: $(SRC)/%.cpp
+$(OBJ)/%.o: $(SRC)/%.cpp directories
 	$(CC) $(CCFLAGS) -c $< -o $@
 
-$(BIN): $(OBJS)
+$(BIN): directories $(OBJS)
 	$(CC) $(CCFLAGS) $(LIBS) $(OBJS) -o $@
+
+directories:
+	mkdir -p $(BINDIR) $(OBJ)
 
 all: $(BIN)
 
